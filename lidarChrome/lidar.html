@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Canvas tutorial</title>
+    <script type="text/javascript">
+      function draw()
+      {
+      	var canvas = document.getElementById('tutorial');
+
+     	if (canvas.getContext) 
+     	{
+        	var ctx = canvas.getContext("2d");
+
+        	// ctx.fillStyle = "rgb(0,0,0)";
+        	// ctx.fillRect (10, 10, 5, 5);
+
+        	// ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+        	// ctx.fillRect (30, 30, 55, 50);
+
+
+        		var r = 200.0;
+        		var centetrX = r+10;
+        		var centetrY = r+10;
+
+
+
+
+
+
+
+        	for(i = 0 ; i < 360; i = i + 1)
+        	{
+        		tempR =  r * (i/360);
+        		console.log(tempR);
+        		var x = tempR * Math.cos(toRadians(i));
+        		var y = tempR * Math.sin(toRadians(i));
+
+        		ctx.fillRect (x+centetrX, y+centetrY, 5, 5);
+        	// 	ctx.fillRect (x, y2, 5, 5);
+
+        	}
+
+
+
+
+        	// for(i = centetrX -r ; i < centetrX + r; i = i+.05)
+        	// {
+        	// 	var x = i ;
+        	// 	//var y = i ;        		var r = 100;
+
+        	// 	var y = centetrY+Math.sqrt(Math.pow(r,2)- Math.pow(((x-centetrX)),2));
+        	// 	var y2 = centetrY-Math.sqrt(Math.pow(r,2)- Math.pow(((x-centetrX)),2));
+
+        	// 	ctx.fillRect (x, y, 5, 5);
+        	// 	ctx.fillRect (x, y2, 5, 5);
+
+        	// }
+
+
+      	}
+      }
+
+      function toDegrees (angle) 
+      {
+  		return angle * (180 / Math.PI);
+	 }
+
+function toRadians (angle) {
+  return angle * (Math.PI / 180);
+}
+
+
+
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="tutorial" width="500" height="500"></canvas>
+  </body>
+</html>
