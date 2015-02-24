@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Quail Commandere</title>
+  <title>InterbotiX Lidar Light Demo</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="jquery.min.js"></script>
 
@@ -19,119 +19,178 @@
 </head>
   
 <body >
-  
-  
-	<div class="row">
-    	<div class="small-2 columns">
-    		<select name="port-selection" id="port-selection">
-    		</select>
-    	</div>
-    	
-    	<div class="small-2 columns">
-    		<button id="port-connect" class="button secondary small expand">
-    			Connect
-    		</button>
-    	</div>
-	</div>
-	
-	<hr />
-	
+		
+		<div id="header" style="width:100%;">
+			<img src="trLogo3.png" id="trLogo" />
+				<h1 style="display:inline;">
+					LIDAR Lite + Servo Mapping Demo
+				</h1>
+		</div>
+		
+		<div id="setup" style="    ">
+			<hr />
+			 
+			<div class="row">
+				<div class="small-1 columns">
+					<select name="port-selection" id="port-selection">
+					</select>
+				</div>
+				
+				<div class="small-1 columns">
+					<button id="port-connect" class="button secondary small expand">
+						Connect
+					</button>
+				</div>
+				
+				<div class="small-1 columns">
+					<button id="startSweep" class="button secondary small expand">
+						Start Sweep
+					</button>
+				</div>
+				
+				<div class="small-1 columns">
+				<!--
+					<button id="stopSweep" class="button secondary small expand">
+						Stop Sweep
+					</button>
+				
+				-->
+					<button id="clearButton" class="button secondary small expand">
+						Clear Canvas
+					</button>
+				
+				
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="small-1 columns">
+					X Center <input type="range" id = "xcenterRange" name="xcenterRange" value = "500" min ="0" max="1000">
+					</select>
+					<br />
+										Y Center <input type="range" id = "ycenterRange" name="ycenterRange" value = "500" min ="0" max="1000">
+
+				</div>
+				
+				<div class="small-1 columns">
+										Draw Lines <input type="checkbox" name="drawLines" id="drawLines" checked>
+					<br />
+											Clear On Sweep <input type="checkbox" name="clearOnSweep" id="clearOnSweep" >
 
 
+				</div>
+				<div class="small-1 columns">
+						Servo Speed<input type="range" name="servoSpeed" id="servoSpeed" value = "64" min ="1" max="1023">
+						
+						
+				</div>
+				<div class="small-1 columns">
+					Max Distance(cm) <input type="text" name="maxDistance" id="maxDistance" value="1000">
+				</div>
+			</div>
+			
+			
+			<div class="row" style="display:none;">
+				<h1>Packet Last Sent:</h1>
+				<span id="packet"></span>
+			
+			
+				
+				<div id="datadata">
+				<h1>Response</h1>
+					<table>
+						<tr>
+							<td id ="resp0h">
+								
+							</td>
+							<td id ="resp1h">
+								
+							</td>
+							<td id ="resp2h">
+								
+							</td>
+							<td id ="resp3h">
+								
+							</td>
+							<td id ="resp4h">
+								
+							</td>
+							<td id ="resp5h">
+								
+							</td>
+							<td id ="resp6h">
+								
+							</td>
+						</tr>
+					
+						<tr>
+							<td id ="resp0d">
+								
+							</td>
+							<td id ="resp1d">
+								
+							</td>
+							<td id ="resp2d">
+								
+							</td>
+							<td id ="resp3d">
+								
+							</td>
+							<td id ="resp4d">
+								
+							</td>
+							<td id ="resp5d">
+								
+							</td>
+							<td id ="resp6d">
+								
+							</td>
+						</tr>
+					
+					
+						<tr>
+							<td id ="resp0l">
+								
+							</td>
+							<td id ="resp02">
+								
+							</td>
+						</tr>
+						<tr>
+							<td id ="resp0lconverted">
+								
+							</td>
+							<td id ="resp02converted">
+								
+							</td>
+						</tr>
+						<tr>
+							<td id ="packetsReceived">
+								
+							</td>
+						</tr>
+					
+					
+					</table>
+				
+				</div>
+			</div>
+		</div>
+		
+			<canvas id="canvasRoom" style="display:block;margin-left:auto;margin-right:auto;" ></canvas>
+		
+		
 
-<div class="row">
-	<h1>Packet Last Sent:</h1>
-	<span id="packet"></span>
+			<div id="toggle">
+				<p>
+					<a  id="setupPanelLink" >Show/Hide Setup Panel</a>
+					<br />
+					See <a href="">here</a> for more information on using this Application and programming your board and using this Application.
 
-
-
-<div id="datadata">
-<h1>Response</h1>
-	<table>
-		<tr>
-			<td id ="resp0h">
-				
-			</td>
-			<td id ="resp1h">
-				
-			</td>
-			<td id ="resp2h">
-				
-			</td>
-			<td id ="resp3h">
-				
-			</td>
-			<td id ="resp4h">
-				
-			</td>
-			<td id ="resp5h">
-				
-			</td>
-			<td id ="resp6h">
-				
-			</td>
-		</tr>
-	
-		<tr>
-			<td id ="resp0d">
-				
-			</td>
-			<td id ="resp1d">
-				
-			</td>
-			<td id ="resp2d">
-				
-			</td>
-			<td id ="resp3d">
-				
-			</td>
-			<td id ="resp4d">
-				
-			</td>
-			<td id ="resp5d">
-				
-			</td>
-			<td id ="resp6d">
-				
-			</td>
-		</tr>
-	
-	
-		<tr>
-			<td id ="resp0l">
-				
-			</td>
-			<td id ="resp02">
-				
-			</td>
-		</tr>
-		<tr>
-			<td id ="resp0lconverted">
-				
-			</td>
-			<td id ="resp02converted">
-				
-			</td>
-		</tr>
-	
-	
-	</table>
-
-</div>
-
-
-    <canvas id="tutorial" width="1000" height="1200"></canvas>
-
-
-    
-
-
-    
-
-    
-
-
-  <script src="app.js"></script>
-
+				</p>
+			</div>
+			
+	<!--end full container -->
+		<script src="app.js"></script>
 </body>
 </html>

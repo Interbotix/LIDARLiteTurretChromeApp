@@ -1300,3 +1300,45 @@ label.error {
 {
 	display:none;	
 }
+
+#trLogo
+{
+
+  background-color: rgb(73, 85, 101);
+border-bottom-color: rgb(130, 130, 130);
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0px;
+border-image-repeat: stretch;
+border-image-slice: 100%;
+border-image-source: none;
+border-image-width: 1;
+border-left-color: rgb(130, 130, 130);
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: rgb(130, 130, 130);
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: rgb(130, 130, 130);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+border-top-style: none;
+border-top-width: 0px;
+box-sizing: border-box;
+color: rgb(130, 130, 130);
+cursor: auto;
+display: inline;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-weight: bold;
+height: 58px;
+line-height: 15.3999996185303px;
+max-width: 100%;
+vertical-align: middle;
+width: 276px;
+margin:10px;
+}
+
+html, body { height: 100%; width: 100%; margin: 0;   min-height: 100%;    padding: 0; }
